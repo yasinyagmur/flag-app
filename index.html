@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>Flag APP</title>
+  </head>
+  <body class="bg-light">
+    <header class="d-flex flex-column align-items-center">
+      <div class="img-fluid">
+        <img
+          src="./image/coutry-flags-by-joimau.png"
+          class="rounded mx-auto d-block col-sm-3"
+          alt=""
+          srcset=""
+        />
+      </div>
+      <h1>Flag App</h1>
+    </header>
+    <main class="container">
+      <div class="input-group mb-3 d-flex justify-content-center mt-3">
+        <div class="input d-flex col-sm-4 justify-content-center">
+          <select class="form-select col-sm-3" placeholder="Select the Country">
+            <option value="">Select the Country</option>
+          </select>
+          <button id="add" class="btn btn-primary ms-2">ADD</button>
+          <button id="clear" class="btn btn-success ms-2">CLEAR</button>
+        </div>
+      </div>
+      <div
+        class="countries mt-4 d-flex flex-column align-items-center gap-4"
+      ></div>
+    </main>
+  </body>
+</html>
