@@ -14,7 +14,7 @@ const fetchCountyy = async (name) => {
     }
     const data = await res.json();
     // console.log(data[0]);
-    // renderCountry(data[0]);
+    renderCountry(data[0]);
   } catch (error) {
     console.log(error);
   }
@@ -47,11 +47,17 @@ let selectedCountryArr = [];
 const add = document.getElementById("add");
 
 add.addEventListener("click", () => {
-  if (selectDiv.value && !selectedCountryArr.includes(selectDiv.value)) {
+  
     selectedCountryArr.push(selectDiv.value);
     fetchCountyy(selectDiv.value);
-  }
+  
 });
+
+const clear = document.getElementById("clear");
+  clear.addEventListener("click", () => {
+    countriesDiv.innerHTML = ``;
+    selectedCountryArr = [];
+  });
 
 const renderError = (err) => {
   const countriesDiv = document.querySelector(".countries");
@@ -90,6 +96,5 @@ const renderCountry = (country) => {
   `;
 };
 
-fetchCountyy("turkey");
-fetchCountyy("usa");
+
 getAllCountries();
