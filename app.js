@@ -3,13 +3,81 @@
 //*=========================================================
 
 //fetch to selected country datas
-const fetchCountyy = async (name)=>{
-  const url = `https://restcountries.com/v3.1/name/${name}`
-  const res = await fetch(url);
-  const data = await res.json();
-  console.log(data[0])
+const fetchCountyy = async (name) => {
+  const url = `https://restcountries.com/v3.1/name/${name}`;
 
-}
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      renderError(`Something went wrong:${res.status}`);
+      throw new Error();
+    }
+    const data = await res.json();
+    // console.log(data[0]);
+    // renderCountry(data[0]);
+  } catch (error) {
+    console.log(error);
+  }
+};
+const selectDiv = document.querySelector(".form-select");
+const getAllCountries = async () => {
+  const url = `https://restcountries.com/v3.1/all`;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      renderError(`Something went wrong:${res.status}`);
+      throw new Error();
+    }
+    const data = await res.json();
+    let countryArr = [];
+    data.forEach((e) => {
+      const { common } = e.name;
+      countryArr.push(common);
+    });
+    countryArr.sort().forEach((country) => {
+      selectDiv.innerHTML += `<option>${country}</option>`;
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-fetchCountyy('turkey');
-fetchCountyy('usa');
+const renderError = (err) => {
+  const countriesDiv = document.querySelector(".countries");
+  countriesDiv.innerHTML = `<h1 class="text-danger">${err}</h1>
+    <img src="./image/404.png" alt="" />
+    `;
+};
+const renderCountry = (country) => {
+  console.log(country);
+  const countriesDiv = document.querySelector(".countries");
+  const {
+    capital,
+    name: { common },
+    region,
+    flags: { svg },
+    languages,
+    currencies,
+  } = country;
+  countriesDiv.innerHTML += `
+  <div class="card shadow-lg align-items-center" style="width: 18rem;">
+    <img src="${svg}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">${common}</h5>
+      <p class="card-text">${region}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"> <i class="fas fa-lg fa-landmark"></i>  ${capital}</li>
+      <li class="list-group-item"><i class="fas fa-lg fa-comments"></i>  ${
+        Object.values(languages)[0]
+      }</li>
+      <li class="list-group-item"><i class="fas fa-lg fa-money-bill-wave"></i>  ${
+        Object.values(currencies)[0].name
+      }, ${Object.values(currencies)[0].symbol}</li>
+    </ul>  
+  </div>
+  `;
+};
+fetchCountyy("turkey");
+fetchCountyy("usa");
+getAllCountries();
