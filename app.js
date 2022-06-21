@@ -47,26 +47,29 @@ let selectedCountryArr = [];
 const add = document.getElementById("add");
 
 add.addEventListener("click", () => {
-  
-    selectedCountryArr.push(selectDiv.value);
-    fetchCountyy(selectDiv.value);
-  
+  if(selectDiv.value && !selectedCountryArr.includes(selectDiv.value)){selectedCountryArr.push(selectDiv.value);
+  fetchCountyy(selectDiv.value);
+  }
+  selectDiv.value = ``;
+
 });
 
 const clear = document.getElementById("clear");
-  clear.addEventListener("click", () => {
-    countriesDiv.innerHTML = ``;
-    selectedCountryArr = [];
-  });
+clear.addEventListener("click", () => {
+  selectDiv.value = ``;
+  countriesDiv.innerHTML = ``;
+});
 
 const renderError = (err) => {
   const countriesDiv = document.querySelector(".countries");
-  countriesDiv.innerHTML = `<h1 class="text-danger">${err}</h1>
-    <img src="./image/404.png" alt="" />
+  countriesDiv.innerHTML = `<figure class="figure">
+  <img src="./image/404.png" class="figure-img img-fluid rounded" alt="...">
+  <figcaption class="figure-caption">${err}</figcaption>
+</figure>
     `;
 };
 const renderCountry = (country) => {
-  console.log(country);
+  // console.log(country);
   const countriesDiv = document.querySelector(".countries");
   const {
     capital,
@@ -95,6 +98,5 @@ const renderCountry = (country) => {
   </div>
   `;
 };
-
 
 getAllCountries();
