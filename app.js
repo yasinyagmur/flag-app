@@ -42,6 +42,17 @@ const getAllCountries = async () => {
   }
 };
 
+let countriesDiv = document.querySelector(".countries");
+let selectedCountryArr = [];
+const add = document.getElementById("add");
+
+add.addEventListener("click", () => {
+  if (selectDiv.value && !selectedCountryArr.includes(selectDiv.value)) {
+    selectedCountryArr.push(selectDiv.value);
+    fetchCountyy(selectDiv.value);
+  }
+});
+
 const renderError = (err) => {
   const countriesDiv = document.querySelector(".countries");
   countriesDiv.innerHTML = `<h1 class="text-danger">${err}</h1>
@@ -78,6 +89,7 @@ const renderCountry = (country) => {
   </div>
   `;
 };
+
 fetchCountyy("turkey");
 fetchCountyy("usa");
 getAllCountries();
