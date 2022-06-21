@@ -56,8 +56,7 @@ add.addEventListener("click", () => {
 
 const clear = document.getElementById("clear");
 clear.addEventListener("click", () => {
-  selectDiv.value = ``;
-  countriesDiv.innerHTML = ``;
+  location.reload()
 });
 
 const renderError = (err) => {
