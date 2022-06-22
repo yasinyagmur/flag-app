@@ -77,6 +77,7 @@ const renderCountry = (country) => {
     flags: { svg },
     languages,
     currencies,
+    population,
   } = country;
   countriesDiv.innerHTML += `
   <div class="card shadow-lg align-items-center" style="width: 18rem;">
@@ -93,9 +94,11 @@ const renderCountry = (country) => {
       <li class="list-group-item"><i class="fas fa-lg fa-money-bill-wave"></i>  ${
         Object.values(currencies)[0].name
       }, ${Object.values(currencies)[0].symbol}</li>
+      <li class="list-group-item"> <i class="fa fa-users" aria-hidden="true"></i>  ${population}</li>
     </ul>  
   </div>
   `;
 };
 
 getAllCountries();
+// fetchCountyy('turkey');
