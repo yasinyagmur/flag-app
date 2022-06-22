@@ -80,7 +80,7 @@ const renderCountry = (country) => {
     population,
   } = country;
   countriesDiv.innerHTML += `
-  <div class="card shadow-lg align-items-center" style="width: 18rem;">
+  <div class="card shadow-lg align-items-center" id='cardDiv' style="width: 18rem;">
     <img src="${svg}" class="card-img-top " alt="...">
     <div class="card-body">
       <h5 class="card-title">${common}</h5>
@@ -101,4 +101,6 @@ const renderCountry = (country) => {
 };
 
 getAllCountries();
-// fetchCountyy('turkey');
+fetchCountyy('turkey');
+fetchCountyy('usa');
+fetchCountyy('turkey');

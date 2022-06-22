@@ -2,8 +2,16 @@
   max-width: 50%;
   height: auto;
 }
-.card-img-top{
+.card-img-top {
   height: 21vh;
-  width: 100%;
-
+  padding: 1px;
+  object-fit: cover;
 }
+
+@media screen and (max-width:768px) {
+  #flags {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+}
+
