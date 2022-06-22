@@ -99,5 +99,3 @@ const renderCountry = (country) => {
 };
 
 getAllCountries();
-fetchCountyy('turkey')
-fetchCountyy('fiji')
