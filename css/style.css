@@ -3,5 +3,7 @@
   height: auto;
 }
 .card-img-top{
-  height: 20vh;
+  height: 21vh;
+  width: 100%;
+
 }
