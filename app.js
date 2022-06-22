@@ -101,6 +101,3 @@ const renderCountry = (country) => {
 };
 
 getAllCountries();
-fetchCountyy('turkey');
-fetchCountyy('usa');
-fetchCountyy('turkey');
